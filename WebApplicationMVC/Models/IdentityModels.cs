@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Crypteron;
 
 namespace WebApplicationMVC.Models
 {
@@ -17,6 +18,7 @@ namespace WebApplicationMVC.Models
             return userIdentity;
         }
 
+        [Secure]
         public string SSN { get; set; }
     }
 
@@ -25,6 +27,7 @@ namespace WebApplicationMVC.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Crypteron.CipherDb.Session.Create(this);
         }
 
         public static ApplicationDbContext Create()
