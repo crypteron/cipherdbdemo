@@ -16,6 +16,8 @@ namespace WebApplicationMVC.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string SSN { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
